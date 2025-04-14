@@ -24,9 +24,33 @@ def read_data(file_name):
                     data[header].append(int(value))
     return data
 
+def selection_sort(number_array, direction = 'ascending'):
+    """
+
+    :param number_array: (list) seznam s numerickou radou
+    :param direction: (str) string naznacujici smer razeni
+    :return:
+    """
+    length = len(number_array)
+    for i in range(length):
+        min_idx = i
+        for n in range(i+1, length):
+            if direction == "ascending":
+                if number_array[n] < number_array[i]:
+                    min_idx = n
+            elif direction == "descending":
+                if number_array[i] > number_array[min_idx]:
+                    min_idx = i
+
+
+        number_array[i], number_array[min_idx] = number_array[min_idx], number_array[i]
+    return number_array
+
 def main():
     data = read_data("numbers.csv")
     print(data)
+    print(selection_sort(data['series_1']))
+
     pass
 
 
