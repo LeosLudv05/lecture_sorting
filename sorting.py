@@ -60,12 +60,29 @@ def bubble_sort(number_array):
 
     return number_array
 
+def insertion_sort(number_array):
+    """
+
+    :param number_array: (list) seznam s cislicemi
+    :return: serazena num array pomoci insertion sortu
+    """
+    length = len(number_array)
+    for i in range(1, length):
+        key = number_array[i]
+        j = i - 1
+        while j>= 0 and number_array[j] > key:
+            number_array[j + 1] = number_array[j]
+            j = j - 1
+        number_array[j + 1] = key
+    return number_array
+
 
 def main():
     data = read_data("numbers.csv")
-    print(data)
+    print(f'Zadaná data: {data}')
     print(selection_sort(data['series_1']))
-    print(bubble_sort(data))
+    print(bubble_sort(data['series_2']))
+    print(insertion_sort(data['series_3']))
     pass
 
 
