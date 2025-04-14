@@ -40,17 +40,32 @@ def selection_sort(number_array, direction = 'ascending'):
                     min_idx = n
             elif direction == "descending":
                 if number_array[i] > number_array[min_idx]:
-                    min_idx = i
+                    min_idx = n
 
 
         number_array[i], number_array[min_idx] = number_array[min_idx], number_array[i]
     return number_array
 
+def bubble_sort(number_array):
+    """
+
+    :param number_array:  (list) seznam s cislicemi
+    :return: serazena num array pomoci bubble sortu
+    """
+    length = len(number_array)
+    for i in range(length - 1):
+        for num_idx in range(length - i - 1):
+            if number_array[num_idx] > number_array[num_idx + 1]:
+                number_array[num_idx], number_array[num_idx + 1] = number_array[num_idx + 1], number_array[num_idx]
+
+    return number_array
+
+
 def main():
     data = read_data("numbers.csv")
     print(data)
     print(selection_sort(data['series_1']))
-
+    print(bubble_sort(data))
     pass
 
 
